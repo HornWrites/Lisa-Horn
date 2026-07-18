@@ -1,27 +1,99 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lisa Horn — Redaktionssystem</title>
-  <!-- Netlify Identity: verwaltet den Login. Muss im Netlify-Dashboard aktiviert werden. -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lisa Horn — Recherche &amp; Reportage</title>
+<meta name="description" content="Investigative Recherchen und Reportagen von Lisa Horn, Journalismus-Studentin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Decap CMS (Nachfolger von Netlify CMS) -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    // Leitet nach dem Bestätigen der Einladungs-/Reset-E-Mail
-    // zurück zu dieser Seite, damit der Login funktioniert.
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><span>LH</span></span>
+      <span class="brand-name">Lisa Horn</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">Menü</button>
+    <nav class="primary-nav">
+      <a href="index.html" aria-current="page">Start</a>
+      <a href="live-blog.html">Live-Blog</a>
+      <a href="methodik.html">Methodik</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow on-dark">Recherche-Portfolio</p>
+        <h1>Die meiste Geschichte liegt unter der Oberfläche.<span class="thin">Journalismus, der nachfragt, bis die Zahlen aufgehen.</span></h1>
+        <p class="hero-lede">Ich bin Lisa Horn, Journalismus-Studentin. Ich recherchiere zu Kommunalpolitik, Wohnungsmarkt und Transparenz — mit Registern, Anfragen und Gesprächen, nicht mit Pressemitteilungen.</p>
+        <div class="hero-actions">
+          <a class="btn btn-on-dark" href="live-blog.html">Live-Blog verfolgen</a>
+          <a class="btn btn-solid" href="methodik.html">Wie ich arbeite</a>
+        </div>
+      </div>
+      <aside class="iceberg-card">
+        <div class="row"><span>Sichtbar</span><b id="stat-published">— veröffentlichte Recherchen</b></div>
+        <div class="row"><span>Unter der Oberfläche</span><b id="stat-ongoing">— laufende Akten</b></div>
+        <div class="row"><span>Anfragen gestellt</span><b>22 seit 2025</b></div>
+        <div class="row"><span>Schwerpunkt</span><b>Kommunalpolitik &amp; Transparenz</b></div>
+        <p class="waterline-note">Wie bei einem Eisberg ist das Veröffentlichte nur ein Teil der Arbeit — der Rest liegt in Anfragen, Akten und Gesprächen, die noch nicht spruchreif sind.</p>
+      </aside>
+    </div>
+  </div>
+  <div class="fracture" aria-hidden="true"></div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="home-teaser-head">
+      <div>
+        <p class="eyebrow">Zuletzt veröffentlicht</p>
+        <h2>Ausgewählte Recherchen</h2>
+      </div>
+      <a class="btn btn-dark" href="live-blog.html">Zum Live-Blog &rarr;</a>
+    </div>
+    <div class="case-grid" id="featured-cases">
+      <!-- wird aus data/articles.json geladen -->
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Lisa Horn — Recherche &amp; Reportage</span>
+    <span><a href="kontakt.html">Kontakt</a> · <a href="ueber-mich.html">Über mich</a> · <a href="live-blog.html">Live-Blog</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+<!--
+  Netlify Identity: fängt Einladungs- und Bestätigungslinks ab, die auf
+  die Startseite verweisen (Standardverhalten von Netlify), und öffnet
+  dann das Passwort-setzen-Fenster. Danach Weiterleitung ins CMS.
+  Nicht entfernen, sonst funktionieren Einladungslinks nicht mehr.
+-->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
